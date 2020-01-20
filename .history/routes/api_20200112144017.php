@@ -18,7 +18,6 @@ Route::post('/detalle_matriculas', 'DetalleMatriculasController@create');
 Route::put('/detalle_matriculas/cupo', 'DetalleMatriculasController@updateCupo');
 Route::put('/detalle_matriculas/matricula', 'DetalleMatriculasController@updateMatricula');
 Route::get('/detalle_matriculas', 'DetalleMatriculasController@get');
-Route::get('/detalle_matriculas/periodo', 'DetalleMatriculasController@getDetalleMatriculaPeriodo');
 Route::get('/detalle_matriculas/count', 'DetalleMatriculasController@getCountDetalleCuposCarrera');
 
 Route::get('/asignaturas', 'AsignaturasController@get');

@@ -37,7 +37,7 @@ class DetalleMatriculasController extends Controller
 
     public function getDetalleMatriculaPeriodo(Request $request)
     {
-        $detalleMatriculaPeriodo = DetalleMatricula::select('*')
+        $detalleMatricula = DetalleMatricula::select('*')
             ->join('asignaturas', 'asignaturas.id', 'detalle_matriculas.asignatura_id')
             ->join('matriculas', 'matriculas.id', 'detalle_matriculas.matricula_id')
             ->join('periodo_lectivos', 'periodo_lectivos.id', 'matriculas.periodo_lectivo_id')
@@ -48,8 +48,7 @@ class DetalleMatriculasController extends Controller
             ->orderby('asignaturas.nombre')
             ->get();
             
-        return response()->json(['detalleMatriculaPeriodo' => $detalleMatriculaPeriodo], 200);
-
+        return response()->json(['detalleMatricula' => $detalleMatricula], 200);
     }
 
     public function getCountDetalleCuposCarrera(Request $request)

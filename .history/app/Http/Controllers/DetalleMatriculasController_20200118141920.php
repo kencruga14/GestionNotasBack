@@ -41,7 +41,7 @@ class DetalleMatriculasController extends Controller
             ->join('asignaturas', 'asignaturas.id', 'detalle_matriculas.asignatura_id')
             ->join('matriculas', 'matriculas.id', 'detalle_matriculas.matricula_id')
             ->join('periodo_lectivos', 'periodo_lectivos.id', 'matriculas.periodo_lectivo_id')
-            ->where('matricula_id', $request->id)
+            ->where('matricula_id', $request->matricula_id)
             ->where('periodo_lectivo_id', $request->periodo_lectivo_id)
             ->with('asignatura')->with('tipo_matricula')
             ->orderby('asignaturas.periodo_academico_id')
