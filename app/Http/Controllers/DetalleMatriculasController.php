@@ -7,6 +7,7 @@ use App\DetalleMatricula;
 use App\Malla;
 use App\Matricula;
 use App\TipoMatricula;
+use App\Estudiante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -41,7 +42,9 @@ class DetalleMatriculasController extends Controller
             ->join('asignaturas', 'asignaturas.id', 'detalle_matriculas.asignatura_id')
             ->join('matriculas', 'matriculas.id', 'detalle_matriculas.matricula_id')
             ->join('periodo_lectivos', 'periodo_lectivos.id', 'matriculas.periodo_lectivo_id')
-            ->where('matricula_id', $request->id)
+            ->join('estudiantes', 'estudiantes.id', 'matriculas.estudiante_id')
+			->join('users', 'estudiantes.user_id', 'users.id')
+            ->where('estudiantes.user_id', $request->user_id)
             ->where('periodo_lectivo_id', $request->periodo_lectivo_id)
             ->with('asignatura')->with('tipo_matricula')
             ->orderby('asignaturas.periodo_academico_id')
